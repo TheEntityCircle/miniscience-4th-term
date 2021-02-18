@@ -2,12 +2,12 @@
 #include <cmath>
 #include <vector>
 
-#include <vtk/vtkDoubleArray.h>
-#include <vtk/vtkPoints.h>
-#include <vtk/vtkPointData.h>
-#include <vtk/vtkXMLStructuredGridWriter.h>
-#include <vtk/vtkStructuredGrid.h>
-#include <vtk/vtkSmartPointer.h>
+#include <vtkDoubleArray.h>
+#include <vtkPoints.h>
+#include <vtkPointData.h>
+#include <vtkXMLStructuredGridWriter.h>
+#include <vtkStructuredGrid.h>
+#include <vtkSmartPointer.h>
 
 using namespace std;
 

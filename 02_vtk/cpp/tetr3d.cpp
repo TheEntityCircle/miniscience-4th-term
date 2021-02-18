@@ -2,13 +2,13 @@
 #include <cmath>
 #include <vector>
 
-#include <vtk/vtkDoubleArray.h>
-#include <vtk/vtkPoints.h>
-#include <vtk/vtkPointData.h>
-#include <vtk/vtkTetra.h>
-#include <vtk/vtkXMLUnstructuredGridWriter.h>
-#include <vtk/vtkUnstructuredGrid.h>
-#include <vtk/vtkSmartPointer.h>
+#include <vtkDoubleArray.h>
+#include <vtkPoints.h>
+#include <vtkPointData.h>
+#include <vtkTetra.h>
+#include <vtkXMLUnstructuredGridWriter.h>
+#include <vtkUnstructuredGrid.h>
+#include <vtkSmartPointer.h>
 
 #include <gmsh.h>
 

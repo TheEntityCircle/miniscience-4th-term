@@ -9,10 +9,10 @@ add_executable(tetr3d tetr3d.cpp)
 
 # Найдём VTK
 find_package(VTK REQUIRED)
-# Теперь можно выставить директории с header-ами
-include_directories(${VTK_INCLUDE_DIR})
+# ... и подключим её со всеми её компонентами её нативными средствами
+include(${VTK_USE_FILE})
 
-# gmsh укажем явно (потому что он был просто распакован руками)
+# gmsh укажем явно по кусочкам (потому что он был просто распакован руками)
 add_library(gmsh SHARED IMPORTED)
 set_target_properties(gmsh PROPERTIES
     IMPORTED_LOCATION "/home/anganar/gmsh-4.7.1-Linux64-sdk/lib/libgmsh.so"
@@ -20,7 +20,7 @@ set_target_properties(gmsh PROPERTIES
 )
 set(GMSH_LIBRARY gmsh)
 
-# если бы gmsh был поставлен прилично, то можно было бы просто вот так
+# если бы gmsh был поставлен прилично, то можно было бы примерно вот так
 #find_package(gmsh REQUIRED)
 #include_directories(${GMSH_INCLUDE_DIR})
 #target_link_libraries(tetr3d ${GMSH_LIBRARY})
