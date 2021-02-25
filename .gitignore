@@ -1,2 +1,7 @@
+00_intro/*
 **/.idea/*
 **/cmake-build-debug/*
+**/build/*
+*.vtk
+*.vtu
+*.pvd
