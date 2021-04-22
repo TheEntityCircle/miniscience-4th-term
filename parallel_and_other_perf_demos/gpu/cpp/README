@@ -1,0 +1,3 @@
+Нужна настроенная CUDA.
+Сборка: nvcc -O2 -Xptxas -O2 -Xcompiler -O2 smth.cu
+Профайлер: nvprof ./your.binary
