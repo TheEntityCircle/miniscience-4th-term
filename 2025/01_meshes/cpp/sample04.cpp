@@ -67,7 +67,7 @@ int main(int argc, char **argv)
   bool funny = false; // false;
   int f = gmsh::model::mesh::field::add("MathEval");
   if(funny)
-    gmsh::model::mesh::field::setString(f, "F", "2*Sin((x+y)/5) + 3");
+    gmsh::model::mesh::field::setString(f, "F", "2*sin((x+y)/5) + 3");
   else
     gmsh::model::mesh::field::setString(f, "F", "4");
   gmsh::model::mesh::field::setAsBackgroundMesh(f);
