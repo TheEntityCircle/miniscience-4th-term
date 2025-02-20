@@ -1,0 +1,37 @@
+# Function spaces
+element = VectorElement("Lagrange", tetrahedron, 1)
+
+# Trial and test functions
+du = TrialFunction(element)     # Incremental displacement
+v  = TestFunction(element)      # Test function
+
+# Functions
+u = Coefficient(element)        # Displacement from previous iteration
+B = Coefficient(element)        # Body force per unit volume
+T = Coefficient(element)        # Traction force on the boundary
+
+# Kinematics
+d = len(u)
+I = Identity(d)                 # Identity tensor
+F = I + grad(u)                 # Deformation gradient
+C = F.T*F                       # Right Cauchy-Green tensor
+
+# Invariants of deformation tensors
+Ic = tr(C)
+J  = det(F)
+
+# Elasticity parameters
+mu    = Constant(tetrahedron)
+lmbda = Constant(tetrahedron)
+
+# Stored strain energy density (compressible neo-Hookean model)
+psi = (mu/2)*(Ic - 3) - mu*ln(J) + (lmbda/2)*(ln(J))**2
+
+# Total potential energy
+Pi = psi*dx - inner(B, u)*dx - inner(T, u)*ds
+
+# First variation of Pi (directional derivative about u in the direction of v)
+F = derivative(Pi, u, v)
+
+# Compute Jacobian of F
+J = derivative(F, u, du)
