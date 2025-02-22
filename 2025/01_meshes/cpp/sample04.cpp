@@ -62,16 +62,17 @@ int main(int argc, char **argv)
   gmsh::model::geo::addVolume({l});
 
   gmsh::model::geo::synchronize();
-
+    
   // We specify element sizes imposed by a size field, just because we can :-)
   bool funny = false; // false;
   int f = gmsh::model::mesh::field::add("MathEval");
-  if(funny)
-    gmsh::model::mesh::field::setString(f, "F", "2*Sin((x+y)/5) + 3");
-  else
-    gmsh::model::mesh::field::setString(f, "F", "4");
+    if(funny){
+        gmsh::model::mesh::field::setString(f, "F", "2*Sin((x+y)/5) + 3");
+    }
+    else{
+        gmsh::model::mesh::field::setString(f, "F", "4");
+    }
   gmsh::model::mesh::field::setAsBackgroundMesh(f);
-
   gmsh::model::mesh::generate(3);
 
   gmsh::write("t4.msh");

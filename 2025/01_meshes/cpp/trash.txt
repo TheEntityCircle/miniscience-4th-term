@@ -1,0 +1,18 @@
+int centerTag_right = gmsh::model::geo::addPoint(RIGHTCenterX, RIGHTCenterY, RIGHTCenterZ, lc);
+    int upTag_right = gmsh::model::geo::addPoint(RIGHTCenterX , RIGHTCenterY , RIGHTCenterZ + radius, lc); //ближняя к центру(?)
+    int innTag_RIGHT = gmsh::model::geo::addPoint(rightCenterX , RIGHTCenterY + radius, RIGHTCenterZ, lc); // Дальная от центра(?)
+    int downTag_RIGHT = gmsh::model::geo::addPoint(RIGHTCenterX , RIGHTCenterY, RIGHTCenterZ - radius, lc);
+    int extTag_RIGHT = gmsh::model::geo::addPoint(RIGHTCenterX , RIGHTCenterY - radius, RIGHTCenterZ, lc);
+    
+    
+    
+    int circleTag_RIGHT1 = gmsh::model::geo::addCircleArc(upTag_RIGHT, centerTag_RIGHT, innTag_RIGHT); //5
+    int circleTag_RIGHT2 = gmsh::model::geo::addCircleArc(innTag_RIGHT, centerTag_RIGHT, downTag_RIGHT); //6
+    int circleTag_RIGHT3 = gmsh::model::geo::addCircleArc(downTag_RIGHT, centerTag_RIGHT, extTag_RIGHT);
+    int circleTag_RIGHT4 = gmsh::model::geo::addCircleArc(extTag_RIGHT, centerTag_RIGHT, upTag_RIGHT);
+    
+    
+    
+    
+    
+    int curveLoopunderTag_RIGHT = gmsh::model::geo::addCurveLoop({circleTag_RIGHT1, circleTag_RIGHT2,circleTag_RIGHT3, circleTag_RIGHT4 });
